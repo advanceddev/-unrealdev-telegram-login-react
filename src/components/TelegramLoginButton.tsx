@@ -6,6 +6,7 @@ import { type TelegramLoginButtonProps } from '../types';
 const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
     const {
         botUsername,
+        widgetVersion = 24,
         requestAccess = 'write',
         size = 'large',
         userPic = true,
@@ -23,7 +24,7 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
         let callbackName: string | undefined;
 
         if ('onAuthCallback' in props && props.onAuthCallback) {
-            callbackName = `__tg_auth_cb_${Date.now()}_${Math.random().toString(36).substring(2, 10)}`;
+            callbackName = `__tg_auth_cb_${Date.now()}_${(Math.random() * 1e9) | 0}`;
             (window as any)[callbackName] = (user: any) => {
                 props.onAuthCallback(user);
             };
@@ -32,7 +33,7 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
         containerRef.current.innerHTML = '';
 
         const script = document.createElement('script');
-        script.src = 'https://telegram.org/js/telegram-widget.js?24';
+        script.src = `https://telegram.org/js/telegram-widget.js?${widgetVersion}`;
         script.async = true;
         script.setAttribute('data-telegram-login', botUsername);
         script.setAttribute('data-request-access', requestAccess);
@@ -56,9 +57,7 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
             if (containerRef.current) {
                 containerRef.current.innerHTML = '';
             }
-            if (callbackName) {
-                delete (window as any)[callbackName];
-            }
+            callbackName && delete (window as any)[callbackName];
         };
     }, [botUsername, props, requestAccess, size, userPic, lang, radius]);
 
@@ -73,4 +72,5 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
     );
 };
 
+TelegramLoginButton.displayName = 'TelegramLoginButton';
 export default TelegramLoginButton;

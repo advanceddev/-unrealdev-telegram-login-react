@@ -48,6 +48,7 @@ Prop | Type | Required | Default | Description
 --- | --- | --- | --- | --- |
 botUsername | string | ✅ | - | Имя вашего Telegram-бота (например, my_test_bot)
 onAuthCallback | (user: TelegramLoginWidgetData) => void | ✅ | - | Колбэк, вызываемый после успешной авторизации
+widgetVersion | number | ❌ | 24 | Версия виджета авторизации Telegram
 authUrl | string | ❌ | - | Ссылка для редиректа с данными пользователя после успешной авторизации
 requestAccess | 'read' \| 'write' | ❌ | 'write' | Уровень доступа к данным пользователя
 size | 'small' \| 'medium' \| 'large' | ❌ | 'large' | Размер кнопки

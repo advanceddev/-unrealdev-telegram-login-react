@@ -14,6 +14,7 @@ export interface TelegramLoginButtonBaseProps {
     authUrl?: string;
     requestAccess?: 'write' | 'read';
     cornerRadius?: number;
+    widgetVersion?: number;
     size?: 'large' | 'medium' | 'small';
     radius?: string | number;
     userPic?: boolean;

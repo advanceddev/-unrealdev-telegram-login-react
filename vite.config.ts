@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import Sonda from 'sonda/vite';
 import { resolve } from 'path';
 
 const isDemo = process.env.VITE_DEMO === 'true';
@@ -9,8 +10,9 @@ export default defineConfig({
     host: "127.0.0.1",
     port: 80,
   },
-  plugins: [react()],
+  plugins: [react(), Sonda()],
   build: {
+    // sourcemap: true, // for Sonda() using only
     lib: isDemo
       ? undefined
       : {
