@@ -121,6 +121,11 @@ export default function LoginPage() {
 - Все данные, полученные в onAuthCallback, должны быть отправлены на ваш сервер.
 - На сервере проверьте hash по алгоритму из [официальной документации](https://core.telegram.org/widgets/login?spm=a2ty_o01.29997173.0.0.44255171L0PWcI#checking-authorization).
 
+## Code of Conduct
+
+Этот проект придерживается Кодекса поведения Contributor Covenant.  
+Ознакомиться можно в файле [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
 ## 📄 Лицензия
 
 MIT © Ivan Lomovtcev (https://t.me/frntbck)
