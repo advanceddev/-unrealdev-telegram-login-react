@@ -1,0 +1,70 @@
+{
+  "name": "@advanceddev/telegram-login-react",
+  "private": false,
+  "version": "1.0.0",
+  "description": "React component for Telegram Login Widget",
+  "keywords": [
+    "react",
+    "telegram",
+    "login",
+    "oauth",
+    "typescript"
+  ],
+  "homepage": "https://github.com/advanceddev/-unrealdev-telegram-login-react",
+  "bugs": {
+    "url": "https://github.com/advanceddev/-unrealdev-telegram-login-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advanceddev/-unrealdev-telegram-login-react.git"
+  },
+  "license": "MIT",
+  "author": "Ivan Lomovtcev <criticalbang@yandex.ru>",
+  "main": "./dist/telegram-login-react.umd.js",
+  "module": "./dist/telegram-login-react.es.js",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/telegram-login-react.es.js",
+      "require": "./dist/telegram-login-react.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "VITE_DEMO=true vite --host",
+    "test": "vitest",
+    "build": "vite build && tsc --project tsconfig.build.json",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.0.10",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^17.0.0",
+    "jsdom": "^27.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "npm:rolldown-vite@7.3.1",
+    "vitest": "^4.0.17"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.3.1"
+  }
+}
