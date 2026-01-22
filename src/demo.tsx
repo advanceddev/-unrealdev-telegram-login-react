@@ -18,6 +18,7 @@ const App = () => {
                 size="large"
                 lang="en"
                 userPic={true}
+                radius={12}
             />
         </div>
     );

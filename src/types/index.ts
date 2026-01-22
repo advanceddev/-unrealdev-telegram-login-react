@@ -14,6 +14,7 @@ export interface TelegramLoginButtonProps {
     requestAccess?: 'write' | 'read';
     cornerRadius?: number;
     size?: 'large' | 'medium' | 'small';
+    radius?: string | number;
     userPic?: boolean;
     lang?: 'en' | 'ru' | 'uk' | 'de' | 'it' | 'es' | 'pt' | 'tr' | 'fa' | 'ar';
     className?: string;

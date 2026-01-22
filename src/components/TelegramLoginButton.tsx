@@ -11,6 +11,7 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = ({
     userPic = true,
     lang = 'en',
     className = '',
+    radius,
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +36,7 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = ({
         script.setAttribute('data-size', size);
         script.setAttribute('data-userpic', String(userPic));
         script.setAttribute('data-lang', lang);
-
+        if (radius !== undefined) script.setAttribute('data-radius', String(radius));
         containerRef.current.appendChild(script);
 
         return () => {
@@ -44,7 +45,7 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = ({
             }
             delete (window as any)[callbackName];
         };
-    }, [botUsername, onAuthCallback, requestAccess, size, userPic, lang]);
+    }, [botUsername, onAuthCallback, requestAccess, size, userPic, lang, radius]);
 
     return <div
         style={{ width: 'fit-content', height: 'auto' }}

@@ -53,6 +53,7 @@ size | 'small' \| 'medium' \| 'large' | ❌ | 'large' | Размер кнопк�
 userPic | boolean | ❌ | true | Показывать аватар пользователя
 lang | 'en' \| 'ru' \| 'uk' \| 'de' \| 'it' \| 'es' \| 'pt' \| 'tr' \| 'fa' \| 'ar' | ❌ | 'en' | Язык виджета
 className | string | ❌ | '' | CSS-класс для контейнера
+radius | string \| number | ❌ | '' | Скругление углов кнопки
 
 
 #### Тип TelegramLoginWidgetData
@@ -87,6 +88,7 @@ interface TelegramLoginWidgetData {
   userPic={false}
   lang="ru"
   className="my-custom-class"
+  radius={12}
 />
 ```
 
