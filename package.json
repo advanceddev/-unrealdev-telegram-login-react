@@ -1,7 +1,7 @@
 {
   "name": "@advanceddev/telegram-login-react",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React component for Telegram Login Widget",
   "keywords": [
     "react",

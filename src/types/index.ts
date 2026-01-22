@@ -8,9 +8,10 @@ export interface TelegramLoginWidgetData {
     hash: string;
 }
 
-export interface TelegramLoginButtonProps {
+export interface TelegramLoginButtonBaseProps {
     botUsername: string;
-    onAuthCallback: (data: TelegramLoginWidgetData) => void;
+    onAuthCallback?: (data: TelegramLoginWidgetData) => void;
+    authUrl?: string;
     requestAccess?: 'write' | 'read';
     cornerRadius?: number;
     size?: 'large' | 'medium' | 'small';
@@ -20,3 +21,17 @@ export interface TelegramLoginButtonProps {
     className?: string;
     children?: React.ReactNode;
 }
+
+interface TelegramLoginButtonCallbackProps extends TelegramLoginButtonBaseProps {
+    onAuthCallback: (data: TelegramLoginWidgetData) => void;
+    authUrl?: never;
+}
+
+interface TelegramLoginButtonRedirectProps extends TelegramLoginButtonBaseProps {
+    authUrl: string;
+    onAuthCallback?: never;
+}
+
+export type TelegramLoginButtonProps =
+    | TelegramLoginButtonCallbackProps
+    | TelegramLoginButtonRedirectProps;
