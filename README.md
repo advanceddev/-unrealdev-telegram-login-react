@@ -2,7 +2,7 @@
 
 React компонент для интеграции [Telegram Login Widget](https://core.telegram.org/widgets/login) в ваши приложения. Поддерживает **React**, **Next.js (App Router)**, **TypeScript** и полностью типизирован.
 
-> ⚠️ **Важно**: Валидацию данных авторизации (`hash`) необходимо выполнять **на сервере** с использованием секретного токена вашего бота. Никогда не проверяйте `hash` на клиенте!
+> ⚠️ **Важно**: Валидацию данных авторизации (`hash`) необходимо выполнять **на сервере** с использованием секретного токена вашего бота. Никогда не проверяйте `hash` на клиенте! Пример: [NodeJS](https://docs.telegram-mini-apps.com/packages/tma-js-init-data-node), [Go](https://docs.telegram-mini-apps.com/packages/init-data-golang).
 
 ---
 
