@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+
 import { TelegramLoginButton, type TelegramLoginWidgetData } from './index';
 
 const componentCode = `<TelegramLoginButton
@@ -10,6 +11,7 @@ const componentCode = `<TelegramLoginButton
   radius={12}
 />`;
 
+// eslint-disable-next-line react-refresh/only-export-components
 const App = () => {
     const handleAuth = (data: TelegramLoginWidgetData) => {
         console.log('✅ Авторизация успешна:', data);
@@ -48,4 +50,5 @@ const App = () => {
     );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 createRoot(document.getElementById('root')!).render(<App />);

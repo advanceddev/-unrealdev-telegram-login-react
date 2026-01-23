@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path'
 import Sonda from 'sonda/vite';
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
 
 const isDemo = process.env.VITE_DEMO === 'true';
 
