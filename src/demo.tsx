@@ -9,6 +9,7 @@ const componentCode = `<TelegramLoginButton
   lang="en"
   userPic={true}
   radius={12}
+  loadingComponent={<p>Загрузка...</p>}
 />`;
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -30,6 +31,7 @@ const App = () => {
                 lang="en"
                 userPic={true}
                 radius={12}
+                loadingComponent={<p>Загрузка...</p>}
             />
             <div style={{ marginTop: '2rem' }}>
                 <h2 style={{ fontSize: '1em' }}>Пример использования:</h2>
