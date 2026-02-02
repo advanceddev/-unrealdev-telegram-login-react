@@ -1,6 +1,6 @@
 'use client';
 
-import { type FC, useEffect, useRef } from 'react';
+import { type FC, useEffect, useRef, useState } from 'react';
 
 import { type TelegramLoginButtonProps, type TelegramLoginWidgetData } from '../types';
 
@@ -14,15 +14,18 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
     lang = 'en',
     className = '',
     radius,
+    loadingComponent,
   } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(Boolean(loadingComponent));
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (!containerRef.current) return;
   
     let callbackName: `__tg_auth_cb_${string}` | undefined;
+    let observer: MutationObserver | null = null; 
     const currentContainer = containerRef.current;
   
     if ('onAuthCallback' in props) {
@@ -39,6 +42,28 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
     const script = document.createElement('script');
     script.src = `https://telegram.org/js/telegram-widget.js?${String(widgetVersion)}`;
     script.async = true;
+    
+    if (loadingComponent) {
+    observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'childList') {
+          const telegramElement = currentContainer.querySelector(
+            'iframe[src*="oauth.telegram.org"], .tgme_widget_login_button'
+          );
+          if (telegramElement) {
+            setIsLoading(false);
+            observer?.disconnect();
+            break;
+          }
+        }
+      }
+    });
+    observer.observe(currentContainer, {
+      childList: true,
+      subtree: true
+    });
+  }
+
     script.setAttribute('data-telegram-login', botUsername);
     script.setAttribute('data-request-access', requestAccess);
     script.setAttribute('data-size', size);
@@ -58,21 +83,31 @@ const TelegramLoginButton: FC<TelegramLoginButtonProps> = (props) => {
     currentContainer.appendChild(script);
   
     return () => {
+      observer?.disconnect();
       currentContainer.innerHTML = '';
       if (callbackName) {
         window[callbackName] = undefined;
       }
     };
-  }, [botUsername, props, requestAccess, size, userPic, lang, radius, widgetVersion]);
+  }, [botUsername, props, loadingComponent, requestAccess, size, userPic, lang, radius, widgetVersion]);
+
 
   return (
+    <>
     <div
-      style={{ width: 'fit-content', height: 'auto' }}
+      style={{ width: 'fit-content', height: 'auto', display: isLoading ? 'none' : 'block' }}
       aria-label="Telegram login button"
       className={className}
       ref={containerRef}
       role="presentation"
     />
+      {isLoading && loadingComponent && 
+        <div style={{ width: 'fit-content', height: 'auto'}}>
+          {loadingComponent}
+        </div>
+      }
+    </>
+
   );
 };
 

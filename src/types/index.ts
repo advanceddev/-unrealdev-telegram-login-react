@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export interface TelegramLoginWidgetData {
     id: number;
     first_name: string;
@@ -20,7 +22,7 @@ export interface TelegramLoginButtonBaseProps {
     userPic?: boolean;
     lang?: 'en' | 'ru' | 'uk' | 'de' | 'it' | 'es' | 'pt' | 'tr' | 'fa' | 'ar';
     className?: string;
-    children?: React.ReactNode;
+    loadingComponent?: ReactNode;
 }
 
 interface TelegramLoginButtonCallbackProps extends TelegramLoginButtonBaseProps {
