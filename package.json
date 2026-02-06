@@ -1,7 +1,7 @@
 {
   "name": "@advanceddev/telegram-login-react",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React component for Telegram Login Widget",
   "keywords": [
     "react",
@@ -20,14 +20,14 @@
   },
   "license": "MIT",
   "author": "Ivan Lomovtcev <criticalbang@yandex.ru>",
-  "main": "./dist/telegram-login-react.umd.js",
+  "main": "./dist/telegram-login-react.cjs",
   "module": "./dist/telegram-login-react.es.js",
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/telegram-login-react.es.js",
-      "require": "./dist/telegram-login-react.umd.js",
+      "require": "./dist/telegram-login-react.cjs",
       "types": "./dist/index.d.ts"
     }
   },
