@@ -10,7 +10,9 @@ export default defineConfig({
     host: "127.0.0.1",
     port: 80,
   },
-  plugins: [react(), Sonda()],
+  plugins: [react({
+    jsxRuntime: 'classic'
+  }), Sonda()],
   build: {
     // sourcemap: true, // for Sonda() using only
     lib: isDemo
@@ -18,12 +20,8 @@ export default defineConfig({
       : {
         entry: resolve(__dirname, 'src/index.ts'),
         name: 'TelegramLoginReact',
-        formats: ['es', 'cjs'],
-        fileName: (format) => {
-          if (format === 'es') return 'telegram-login-react.es.js';
-          if (format === 'cjs') return 'telegram-login-react.cjs';
-          return 'telegram-login-react.js';
-        },
+        formats: ['es'],
+        fileName: () => 'index.js',
       },
     rolldownOptions: isDemo
       ? {}
