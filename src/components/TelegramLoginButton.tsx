@@ -1,6 +1,7 @@
 'use client';
 
 import { type FC, useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import { type TelegramLoginButtonProps, type TelegramLoginWidgetData } from '../types';
 
