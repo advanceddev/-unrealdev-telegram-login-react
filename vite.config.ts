@@ -18,8 +18,12 @@ export default defineConfig({
       : {
         entry: resolve(__dirname, 'src/index.ts'),
         name: 'TelegramLoginReact',
-        formats: ['es', 'umd'],
-        fileName: (format) => `telegram-login-react.${format}.js`,
+        formats: ['es', 'cjs'],
+        fileName: (format) => {
+          if (format === 'es') return 'telegram-login-react.es.js';
+          if (format === 'cjs') return 'telegram-login-react.cjs';
+          return 'telegram-login-react.js';
+        },
       },
     rolldownOptions: isDemo
       ? {}
